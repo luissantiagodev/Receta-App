@@ -42,6 +42,16 @@ public class SQLConstants implements BaseColumns {
                     COLUMN_IMAGE + " TEXT , "+
                     COLUMN_FAVORITES + " INT "+ ")";
 
+    public static final String [] ALL_COLUMNS = {
+            COLUMN_ID,
+            COLUMN_NAME,
+            COLUMN_PEOPLE,
+            COLUMN_DESCRIPTION,
+            COLUMN_PREPARACION,
+            COLUMN_IMAGE,
+            COLUMN_FAVORITES
+    };
+
 
     public static final String SQL_DELETE_TABLE = "DROP TABLE " + NAME_TABLE;
 

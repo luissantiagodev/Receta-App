@@ -33,14 +33,26 @@ public class MainActivity extends AppCompatActivity {
         mFab.setOnClickListener(View->{
             startActivity(new Intent(this , AddRecetaActivity.class));
         });
+
+
+
     }
 
     public void setRecyclerView(){
         recyclerRecetas = findViewById(R.id.recycleview);
-        mAdapter = new RecetaAdapter(mRecetaList , this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerRecetas.setLayoutManager(linearLayoutManager);
+        update();
+    }
+
+
+    public ArrayList<Receta> getData(){
+        return data.getAllRecetas();
+    }
+
+    public void update(){
+        mAdapter = new RecetaAdapter(getData(), this);
         recyclerRecetas.setAdapter(mAdapter);
     }
 }
