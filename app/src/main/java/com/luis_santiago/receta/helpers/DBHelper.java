@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.luis_santiago.receta.SQLConstants;
+
+
 /**
  * Created by Luis Santiago on 7/3/18.
  */

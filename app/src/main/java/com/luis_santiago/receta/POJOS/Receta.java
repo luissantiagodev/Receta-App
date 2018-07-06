@@ -1,5 +1,9 @@
 package com.luis_santiago.receta.POJOS;
 
+import android.content.ContentValues;
+
+import com.luis_santiago.receta.*;
+
 /**
  * Created by Luis Santiago on 7/2/18.
  */
@@ -77,5 +81,16 @@ public class Receta {
 
     public void setFav(int fav) {
         this.fav = fav;
+    }
+
+    public ContentValues toValues(){
+        ContentValues contentValues = new ContentValues(7);
+        contentValues.put(SQLConstants.COLUMN_ID, id);
+        contentValues.put(SQLConstants.COLUMN_NAME , nombre);
+        contentValues.put(SQLConstants.COLUMN_PEOPLE , personas);
+        contentValues.put(SQLConstants.COLUMN_DESCRIPTION, descripcion);
+        contentValues.put(SQLConstants.COLUMN_IMAGE , image);
+        contentValues.put(SQLConstants.COLUMN_FAVORITES , fav);
+        return contentValues;
     }
 }
