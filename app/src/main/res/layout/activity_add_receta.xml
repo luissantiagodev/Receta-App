@@ -80,6 +80,18 @@
            android:numStars="5"
            android:layout_height="wrap_content" />
 
+
+        <Button
+            android:id="@+id/photo"
+            android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+            android:theme="@style/Button.Main"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:text="Tomar foto"
+            />
+
+
         <Button
             android:id="@+id/add"
             android:theme="@style/Button.Main"

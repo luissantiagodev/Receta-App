@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this , AddRecetaActivity.class));
         });
 
-
-
     }
 
     public void setRecyclerView(){
@@ -43,9 +41,14 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerRecetas.setLayoutManager(linearLayoutManager);
-        update();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        update();
+    }
 
     public ArrayList<Receta> getData(){
         return data.getAllRecetas();

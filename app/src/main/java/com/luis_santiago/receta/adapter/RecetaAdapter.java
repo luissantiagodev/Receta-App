@@ -1,18 +1,32 @@
 package com.luis_santiago.receta.adapter;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.luis_santiago.receta.POJOS.Receta;
 import com.luis_santiago.receta.R;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -66,6 +80,21 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaHold
             name.setText(currentReceta.getNombre());
             people.setText("Personas " + String.valueOf(currentReceta.getPersonas()));
             description.setText(currentReceta.getDescripcion());
+            Log.e("ADAPTER" , currentReceta.getImage());
+
+            String pathName = Environment.getExternalStorageDirectory().getPath() + currentReceta.getImage();
+            File path = new File(pathName);
+            if(path.exists()){
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                Bitmap bm = BitmapFactory.decodeFile(pathName, options);
+                mImageView.setImageBitmap(bm);
+            }
+            else{
+                //Set default picture or do nothing.
+                Log.e("ADAPTER" , "dOES NOT LOAD");
+            }
+
         }
     }
+
 }
