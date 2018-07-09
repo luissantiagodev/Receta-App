@@ -18,6 +18,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class AddRecetaActivity extends AppCompatActivity {
     private static final String TAG = AddRecetaActivity.class.getSimpleName();
@@ -48,6 +50,7 @@ public class AddRecetaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_receta);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         init();
         data = new Data(this);
         addButton.setOnClickListener(View->{
@@ -55,7 +58,7 @@ public class AddRecetaActivity extends AppCompatActivity {
             if(isPhototaken){
                 data.open();
                 Receta receta = new Receta(
-                        id.getText().toString().trim(),
+                        UUID.randomUUID().toString(),
                         name.getText().toString().trim(),
                         Integer.valueOf(personas.getText().toString().trim()),
                         description.getText().toString().trim(),
@@ -156,7 +159,6 @@ public class AddRecetaActivity extends AppCompatActivity {
 
     private void init() {
         addButton = findViewById(R.id.add);
-        id = findViewById(R.id.id);
         name = findViewById(R.id.nombre);
         personas = findViewById(R.id.personas);
         description = findViewById(R.id.description);

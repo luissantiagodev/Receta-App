@@ -80,12 +80,10 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaHold
             name.setText(currentReceta.getNombre());
             people.setText("Personas " + String.valueOf(currentReceta.getPersonas()));
             description.setText(currentReceta.getDescripcion());
-            Log.e("ADAPTER" , currentReceta.getImage());
-            String pathName = currentReceta.getImage();
-            File path = new File(pathName);
+            File path = new File(currentReceta.getImage());
             if(path.exists()){
                 BitmapFactory.Options options = new BitmapFactory.Options();
-                Bitmap bm = BitmapFactory.decodeFile(pathName, options);
+                Bitmap bm = BitmapFactory.decodeFile(currentReceta.getImage(), options);
                 mImageView.setImageBitmap(bm);
             }
             else{
