@@ -34,7 +34,7 @@ import java.util.ArrayList;
  */
 public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaHolder>{
 
-    private ArrayList<Receta> mRecetaList;
+    public ArrayList<Receta> mRecetaList;
     private Context mContext;
 
     public RecetaAdapter(ArrayList<Receta> recetas , Context context){
@@ -81,8 +81,7 @@ public class RecetaAdapter extends RecyclerView.Adapter<RecetaAdapter.RecetaHold
             people.setText("Personas " + String.valueOf(currentReceta.getPersonas()));
             description.setText(currentReceta.getDescripcion());
             Log.e("ADAPTER" , currentReceta.getImage());
-
-            String pathName = Environment.getExternalStorageDirectory().getPath() + currentReceta.getImage();
+            String pathName = currentReceta.getImage();
             File path = new File(pathName);
             if(path.exists()){
                 BitmapFactory.Options options = new BitmapFactory.Options();

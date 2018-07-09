@@ -80,4 +80,16 @@ public class Data {
         return recetas;
     }
 
+
+    public ArrayList<Receta> getFavs (){
+        ArrayList<Receta> recetas = new ArrayList<>();
+        String [] whereArgs = new String[]{String.valueOf(1)};
+        return recetas;
+    }
+
+    public void deleteItem(String id){
+        String [] whereArfs = new String[] {String.valueOf(id)};
+        mSqliteDatabase.delete(SQLConstants.NAME_TABLE , SQLConstants.WHERE_CLAUSE_ID , whereArfs);
+    }
+
 }

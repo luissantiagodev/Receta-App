@@ -52,6 +52,8 @@ public class SQLConstants implements BaseColumns {
             COLUMN_FAVORITES
     };
 
+    public static final String WHERE_CLAUSE_ID = COLUMN_ID+"=?";
+
 
     public static final String SQL_DELETE_TABLE = "DROP TABLE " + NAME_TABLE;
 

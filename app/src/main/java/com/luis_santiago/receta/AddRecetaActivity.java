@@ -42,6 +42,7 @@ public class AddRecetaActivity extends AppCompatActivity {
     private static final int TAKE_PICTURE = 1;
     private final int REQUEST_CODE_PERMISSION = 2;
     private Uri imageUri;
+    private String absolutePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class AddRecetaActivity extends AppCompatActivity {
                         Integer.valueOf(personas.getText().toString().trim()),
                         description.getText().toString().trim(),
                         preparacion.getText().toString().trim(),
-                        imageUri.toString(),
+                        absolutePath,
                         ratingBar.getNumStars()
                 );
                 data.insertReceta(receta);
@@ -79,6 +80,7 @@ public class AddRecetaActivity extends AppCompatActivity {
                     intent.putExtra(MediaStore.EXTRA_OUTPUT , FileProvider.getUriForFile(this , "com.luis_santiago.receta.provider" , pictureFile));
                     intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     imageUri = FileProvider.getUriForFile(this , "com.luis_santiago.receta.provider" , pictureFile);
+                    absolutePath = pictureFile.getAbsolutePath();
                     startActivityForResult(intent , TAKE_PICTURE);
                 }
             }else{
